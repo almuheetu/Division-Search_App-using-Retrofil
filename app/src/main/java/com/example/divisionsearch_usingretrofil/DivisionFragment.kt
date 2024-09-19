@@ -25,7 +25,15 @@ class DivisionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDivisionListBinding.inflate(inflater, container, false)
-        binding.root
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView: RecyclerView = binding.divisionRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+
+    }
 }
