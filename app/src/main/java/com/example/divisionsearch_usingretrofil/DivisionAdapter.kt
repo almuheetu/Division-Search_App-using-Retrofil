@@ -22,15 +22,17 @@ class DivisionAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         val division = divisionList[position]
         viewHolder.binding.tvEmployeeDivisionName.text =  division.name
-
     }
-
 
     override fun getItemCount(): Int {
         return divisionList.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(division: DivisionResponseItem)
+
     }
 
 }

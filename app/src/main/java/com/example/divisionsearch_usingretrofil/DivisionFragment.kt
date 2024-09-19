@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DivisionFragment : Fragment() {
+class DivisionFragment : Fragment(), DivisionAdapter.OnItemClickListener {
     private lateinit var binding: FragmentDivisionListBinding
     private lateinit var divisionAdapter: DivisionAdapter
 
@@ -40,6 +40,9 @@ class DivisionFragment : Fragment() {
                 recyclerView.adapter = divisionAdapter
             }
         }
+    }
+
+    override fun onItemClick(division: DivisionResponseItem) {
 
     }
 }
