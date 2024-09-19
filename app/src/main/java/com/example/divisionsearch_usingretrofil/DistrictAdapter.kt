@@ -10,7 +10,7 @@ import com.example.divisionsearch_usingretrofil.placeholder.PlaceholderContent.P
 import com.example.divisionsearch_usingretrofil.databinding.AdapterDistrictBinding
 
 class DistrictAdapter(
-    private val districtList: ArrayList<DivisionResponseItem>
+    private val districtList: ArrayList<DivisionResponseItem>,
 
 ) : RecyclerView.Adapter<DistrictAdapter.ViewHolder>() {
     class ViewHolder(var binding: AdapterDistrictBinding) : RecyclerView.ViewHolder(binding.root)
@@ -24,7 +24,9 @@ class DistrictAdapter(
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val district = districtList[position]
+        viewHolder.binding.tvDistrictName.text =  district.name
 
     }
 
