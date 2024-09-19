@@ -1,24 +1,21 @@
 package com.example.divisionsearch_usingretrofil
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.divisionsearch_usingretrofil.databinding.FragmentDivisionListBinding
-import com.example.divisionsearch_usingretrofil.placeholder.PlaceholderContent
-import com.example.myapplication.DivisionAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DivisionFragment : Fragment() {
     private lateinit var binding: FragmentDivisionListBinding
     private lateinit var divisionAdapter: DivisionAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +29,17 @@ class DivisionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView: RecyclerView = binding.divisionRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        val responseApi = RetrofitHelper.getInstance().create(ResponseApi::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = responseApi.getDivision()
+            if (result.body() != null) {
+                Log.d("response", result.body().toString())
+                divisionAdapter = DivisionAdapter(result.body()!!)
+                recyclerView.adapter = divisionAdapter
+            }
+        }
 
     }
 }

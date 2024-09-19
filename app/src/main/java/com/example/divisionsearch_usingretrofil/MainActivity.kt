@@ -13,5 +13,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+//        if (savedInstanceState == null) {
+//            val fragment = DivisionFragment()
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, fragment)
+//                .commit()
+//        }
     }
 }

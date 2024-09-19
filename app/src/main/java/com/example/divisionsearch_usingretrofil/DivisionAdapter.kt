@@ -1,9 +1,8 @@
-package com.example.myapplication
+package com.example.divisionsearch_usingretrofil
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.divisionsearch_usingretrofil.DivisionResponseItem
 import com.example.divisionsearch_usingretrofil.databinding.AdapterDivisionBinding
 
 
